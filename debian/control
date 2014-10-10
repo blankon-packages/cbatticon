@@ -15,6 +15,6 @@ Homepage: https://github.com/valr/cbatticon
 
 Package: cbatticon
 Architecture: any
-Depends:  libnotify
+Depends:  libnotify4
 Description: Lightweight and fast battery icon
  A lightweight and fast battery icon that sits in your system tray
