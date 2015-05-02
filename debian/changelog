@@ -1,3 +1,9 @@
+cbatticon (1.4.2+blankon1) tambora; urgency=low
+
+  * New upstream release
+
+ -- Mahyuddin <yudi.al@gmail.com>  Sat, 02 May 2015 14:36:40 +0700
+
 cbatticon (1.4.0+blankon2) tambora; urgency=low
 
   * Fix depends name

@@ -21,8 +21,8 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define CBATTICON_VERSION_NUMBER 1.4.0
-#define CBATTICON_VERSION_STRING "1.4.0"
+#define CBATTICON_VERSION_NUMBER 1.4.2
+#define CBATTICON_VERSION_STRING "1.4.2"
 
 #include <glib/gprintf.h>
 #include <gtk/gtk.h>
@@ -34,7 +34,7 @@
 #include <math.h>
 #include <syslog.h>
 
-static gboolean get_options (int argc, char **argv);
+static gint get_options (int argc, char **argv);
 static gboolean get_power_supply (gchar *battery_suffix, gboolean list_power_supply);
 
 static gboolean get_sysattr_string (gchar *path, gchar *attribute, gchar **value);
@@ -136,7 +136,7 @@ static GTimer  *estimation_timer              = NULL;
  * command line options function
  */
 
-static gboolean get_options (int argc, char **argv)
+static gint get_options (int argc, char **argv)
 {
     GOptionContext *option_context;
     GError *error = NULL;
@@ -170,7 +170,7 @@ static gboolean get_options (int argc, char **argv)
         g_printerr ("Cannot parse command line arguments: %s\n", error->message);
         g_error_free (error); error = NULL;
 
-        return FALSE;
+        return -1;
     }
 
     g_option_context_free (option_context);
@@ -181,7 +181,7 @@ static gboolean get_options (int argc, char **argv)
         g_print ("cbatticon: a lightweight and fast battery icon that sits in your system tray\n");
         g_print ("version %s\n", CBATTICON_VERSION_STRING);
 
-        return FALSE;
+        return 0;
     }
 
     /* option : list available power supplies (battery and AC) */
@@ -190,7 +190,7 @@ static gboolean get_options (int argc, char **argv)
         g_print ("List of available power supplies:\n");
         get_power_supply (NULL, TRUE);
 
-        return FALSE;
+        return 0;
     }
 
     /* option : list available icon types */
@@ -205,7 +205,7 @@ static gboolean get_options (int argc, char **argv)
         g_print ("notification\t%s\n", HAS_NOTIFICATION_ICON_TYPE == TRUE ? "available" : "unavailable");
         g_print ("symbolic\t%s\n"    , HAS_SYMBOLIC_ICON_TYPE     == TRUE ? "available" : "unavailable");
 
-        return FALSE;
+        return 0;
     }
 
     /* option : set icon type */
@@ -257,7 +257,7 @@ static gboolean get_options (int argc, char **argv)
         g_printerr ("Critical level is higher than low level! They have been reset to default\n");
     }
 
-    return TRUE;
+    return 1;
 }
 
 /*
@@ -300,6 +300,10 @@ static gboolean get_power_supply (gchar *battery_suffix, gboolean list_power_sup
                                 get_battery_current_rate (TRUE, NULL) == FALSE) {
                                 estimation_needed = TRUE;
                                 estimation_timer = g_timer_new ();
+
+                                if (configuration.debug_output == TRUE) {
+                                  g_printf ("workaround   : current rate is not available, estimating rate\n");
+                                }
                             }
 
                             if (configuration.debug_output == TRUE) {
@@ -384,10 +388,16 @@ static gboolean get_sysattr_double (gchar *path, gchar *attribute, gdouble *valu
     g_free (sysattr_filename);
 
     if (sysattr_status == TRUE) {
-        if (value != NULL) {
-            *value = g_ascii_strtod (sysattr_value, NULL);
-            if (errno != 0 || *value < 0.01) sysattr_status = FALSE;
+        gdouble double_value = g_ascii_strtod (sysattr_value, NULL);
+
+        if (errno != 0 || double_value < 0.01) {
+          sysattr_status = FALSE;
         }
+
+        if (value != NULL) {
+            *value = double_value;
+        }
+
         g_free (sysattr_value);
     }
 
@@ -983,9 +993,11 @@ static gchar* get_icon_name (gint state, gint percentage)
 
 int main (int argc, char **argv)
 {
-    if (get_options (argc, argv) == FALSE) {
-        return -1;
-    }
+    gint ret;
+
+    ret = get_options (argc, argv);
+    if (ret <= 0)
+      return ret;
 
 #ifdef WITH_NOTIFY
     if (configuration.hide_notification == FALSE) {
