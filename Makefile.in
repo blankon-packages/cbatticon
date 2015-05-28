@@ -64,6 +64,7 @@ install: $(BIN)
 	@echo -e '\033[1;33mInstalling $(PACKAGE_NAME)\033[0m'
 	$(VERBOSE) $(INSTALL) -d "$(DESTDIR)$(BINDIR)"
 	$(VERBOSE) $(INSTALL_BIN) $(BIN) "$(DESTDIR)$(BINDIR)"/
+	$(VERBOSE) $(INSTALL_BIN) cbatticon.launch "$(DESTDIR)$(BINDIR)"/
 	$(VERBOSE) $(INSTALL) -d "$(DESTDIR)$(DATADIR)"
 	$(VERBOSE) $(INSTALL_DATA) cbatticon.desktop "$(DESTDIR)$(DATADIR)"/
 

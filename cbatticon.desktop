@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Lightweight Power Applet
 Name[id_ID]=Aplet Daya Ringan
-Exec=cbatticon BAT0 -i notification -x "gnome-control-center power" -l 15 -r 3 -c "systemctl poweroff"
+Exec=cbatticon.launch
 Terminal=false
 Type=Application
 OnlyShowIn=GNOME;

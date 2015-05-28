@@ -1,3 +1,9 @@
+cbatticon (1.4.2+blankon2) tambora; urgency=low
+
+  * Add cbatticon.launch
+
+ -- Mahyuddin <yudi.al@gmail.com>  Thu, 28 May 2015 20:51:31 +0700
+
 cbatticon (1.4.2+blankon1) tambora; urgency=low
 
   * New upstream release

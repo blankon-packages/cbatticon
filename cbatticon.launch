@@ -1,0 +1,4 @@
+#!/bin/sh
+
+BAT=`grep -l Battery /sys/class/power_supply/*/type | sed -e "s/\/sys\/class\/power_supply\///g" -e "s/\/type//g"`
+cbatticon $BAT -i notification -x "gnome-control-center power" -l 15 -r 3 -c "systemctl poweroff"
