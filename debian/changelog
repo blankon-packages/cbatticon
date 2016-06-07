@@ -1,3 +1,9 @@
+cbatticon (1.4.2+blankon3) tambora; urgency=medium
+
+  * Rebuild 
+
+ -- dotovr <dotovr@preko>  Tue, 07 Jun 2016 22:18:34 +0700
+
 cbatticon (1.4.2+blankon2) tambora; urgency=low
 
   * Add cbatticon.launch
