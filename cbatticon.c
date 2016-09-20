@@ -1076,7 +1076,7 @@ int main (int argc, char **argv)
     gint ret;
 
     setlocale (LC_ALL, "");
-    bindtextdomain (CBATTICON_STRING, NLSDIR);
+    //bindtextdomain (CBATTICON_STRING, NLSDIR);
     bind_textdomain_codeset (CBATTICON_STRING, "UTF-8");
     textdomain (CBATTICON_STRING);
 
