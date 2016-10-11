@@ -1,3 +1,10 @@
+cbatticon (1.6.4+blankon1+nmu1) UNRELEASED; urgency=medium
+
+  * disabale notify Power PC/AC
+  * 
+
+ -- AnTo SamalonA <antosamalona@masDell>  Wed, 12 Oct 2016 00:18:05 +0800
+
 cbatticon (1.6.4+blankon1) tambora; urgency=medium
 
   * Upstream release
