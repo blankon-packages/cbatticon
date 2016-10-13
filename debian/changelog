@@ -1,3 +1,9 @@
+cbatticon (1.6.4+blankon3) tambora; urgency=medium
+
+  * Revert cbatticon.launc 
+
+ -- Rahman Yusri Aftian <aftian@blankon.id>  Thu, 13 Oct 2016 22:19:39 +0700
+
 cbatticon (1.6.4+blankon2) tambora; urgency=medium
 
   * disabale notify Power PC/AC
