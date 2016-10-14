@@ -1,3 +1,9 @@
+cbatticon (1.6.4+blankon4) tambora; urgency=medium
+
+  * Rebuild
+
+ -- Mahyuddin <yudi.al@gmail.com>  Fri, 14 Oct 2016 15:23:31 +0700
+
 cbatticon (1.6.4+blankon3) tambora; urgency=medium
 
   * Revert cbatticon.launc 
