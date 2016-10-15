@@ -1,8 +1,8 @@
 cbatticon (1.6.4+blankon5) tambora; urgency=medium
 
-  * Make sure to check battery 
+  * Add patch to check-battery by MDAMT 
 
- -- Mahyuddin <yudi.al@gmail.com>  Sat, 15 Oct 2016 14:45:45 +0700
+ -- Mahyuddin <yudi.al@gmail.com>  Sat, 15 Oct 2016 18:22:50 +0700
 
 cbatticon (1.6.4+blankon4) tambora; urgency=medium
 

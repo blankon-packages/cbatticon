@@ -365,12 +365,12 @@ static void get_power_supplies (void)
                                 estimation_timer = g_timer_new ();
 
                                 if (configuration.debug_output == TRUE) {
-                                    g_printf ("workaround: current rate is not available, estimating rate\n");
+                                    g_printf (_("workaround: current rate is not available, estimating rate\n"));
                                 }
                             }
 
                             if (configuration.debug_output == TRUE) {
-                                g_printf ("battery path: %s\n", battery_path);
+                                g_printf (_("battery path: %s\n"), battery_path);
                             }
                         }
                     }
@@ -389,7 +389,7 @@ static void get_power_supplies (void)
                         ac_path = g_strdup (path);
 
                         if (configuration.debug_output == TRUE) {
-                            g_printf ("ac path: %s\n", ac_path);
+                            g_printf (_("ac path: %s\n"), ac_path);
                         }
                     }
                 }
@@ -478,7 +478,7 @@ static gboolean get_battery_present (gboolean *present)
         *present = g_str_has_prefix (sysattr_value, "1") ? TRUE : FALSE;
 
         if (configuration.debug_output == TRUE) {
-            g_printf ("battery present: %s", sysattr_value);
+            g_printf (_("battery present: %s"), sysattr_value);
         }
 
         g_free (sysattr_value);
@@ -508,7 +508,7 @@ static gboolean get_battery_status (gint *status)
             *status = UNKNOWN;
 
         if (configuration.debug_output == TRUE) {
-            g_printf ("battery status: %d - %s", *status, sysattr_value);
+            g_printf (_("battery status: %d - %s"), *status, sysattr_value);
         }
 
         g_free (sysattr_value);
@@ -533,7 +533,7 @@ static gboolean get_ac_online (gboolean *online)
         *online = g_str_has_prefix (sysattr_value, "1") ? TRUE : FALSE;
 
         if (configuration.debug_output == TRUE) {
-            g_printf ("ac online: %s", sysattr_value);
+            g_printf (_("ac online: %s"), sysattr_value);
         }
 
         g_free (sysattr_value);
@@ -593,7 +593,7 @@ static gboolean get_battery_charge (gboolean remaining, gint *percentage, gint *
 
     if (get_battery_full_capacity (&use_charge, &full_capacity) == FALSE) {
         if (configuration.debug_output == TRUE) {
-            g_printf ("full capacity: %s\n", "unavailable");
+            g_printf (_("full capacity: %s\n"), _("unavailable"));
         }
 
         return FALSE;
@@ -601,7 +601,7 @@ static gboolean get_battery_charge (gboolean remaining, gint *percentage, gint *
 
     if (get_battery_remaining_capacity (use_charge, &remaining_capacity) == FALSE) {
         if (configuration.debug_output == TRUE) {
-            g_printf ("remaining capacity: %s\n", "unavailable");
+            g_printf (_("remaining capacity: %s\n"), _("unavailable"));
         }
 
         return FALSE;
@@ -623,7 +623,7 @@ static gboolean get_battery_charge (gboolean remaining, gint *percentage, gint *
 
     if (get_battery_current_rate (use_charge, &current_rate) == FALSE) {
         if (configuration.debug_output == TRUE) {
-            g_printf ("current rate: %s\n", "unavailable");
+            g_printf (_("current rate: %s\n"), _("unavailable"));
         }
 
         return FALSE;
@@ -936,7 +936,7 @@ static gchar* get_tooltip_string (gchar *battery, gchar *time)
     g_strlcpy (tooltip_string, battery, STR_LTH);
 
     if (configuration.debug_output == TRUE) {
-        g_printf ("tooltip: %s\n", battery);
+        g_printf (_("tooltip: %s\n"), battery);
     }
 
     if (time != NULL) {
@@ -944,7 +944,7 @@ static gchar* get_tooltip_string (gchar *battery, gchar *time)
         g_strlcat (tooltip_string, time, STR_LTH);
 
         if (configuration.debug_output == TRUE) {
-            g_printf ("tooltip: %s\n", time);
+            g_printf (_("tooltip: %s\n"), time);
         }
     }
 
@@ -994,7 +994,7 @@ static gchar* get_battery_string (gint state, gint percentage)
     }
 
     if (configuration.debug_output == TRUE) {
-        g_printf ("battery string: %s\n", battery_string);
+        g_printf (_("battery string: %s\n"), battery_string);
     }
 
     return battery_string;
@@ -1021,7 +1021,7 @@ static gchar* get_time_string (gint minutes)
     }
 
     if (configuration.debug_output == TRUE) {
-        g_printf ("time string: %s\n", time_string);
+        g_printf (_("time string: %s\n"), time_string);
     }
 
     return time_string;
@@ -1069,7 +1069,7 @@ static gchar* get_icon_name (gint state, gint percentage)
     }
 
     if (configuration.debug_output == TRUE) {
-        g_printf ("icon name: %s\n", icon_name);
+        g_printf (_("icon name: %s\n"), icon_name);
     }
 
     return icon_name;
@@ -1128,7 +1128,7 @@ int main (int argc, char **argv)
     gint ret;
 
     setlocale (LC_ALL, "");
-    bindtextdomain (CBATTICON_STRING, NLSDIR);
+    //bindtextdomain (CBATTICON_STRING, NLSDIR);
     bind_textdomain_codeset (CBATTICON_STRING, "UTF-8");
     textdomain (CBATTICON_STRING);
 
