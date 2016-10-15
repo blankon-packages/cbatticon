@@ -1,3 +1,9 @@
+cbatticon (1.6.4+blankon5) tambora; urgency=medium
+
+  * Make sure to check battery 
+
+ -- Mahyuddin <yudi.al@gmail.com>  Sat, 15 Oct 2016 14:45:45 +0700
+
 cbatticon (1.6.4+blankon4) tambora; urgency=medium
 
   * Rebuild
