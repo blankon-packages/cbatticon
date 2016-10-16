@@ -1,3 +1,10 @@
+cbatticon (1.6.4+blankon6) tambora; urgency=medium
+
+  * Disable parameter BAT in cbatticon.launch
+    - Check battery now run in upstream 
+
+ -- Mahyuddin <yudi.al@gmail.com>  Sun, 16 Oct 2016 10:47:20 +0700
+
 cbatticon (1.6.4+blankon5) tambora; urgency=medium
 
   * Add patch to check-battery by MDAMT 
