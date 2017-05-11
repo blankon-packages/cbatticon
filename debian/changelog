@@ -1,3 +1,9 @@
+cbatticon (1.6.4+blankon7) uluwatu; urgency=medium
+
+  * Rebuild uluwatu
+
+ -- Anto Samalona <ansamsoftdev@gmail.com>  Thu, 11 May 2017 20:10:22 +0800
+
 cbatticon (1.6.4+blankon6) tambora; urgency=medium
 
   * Disable parameter BAT in cbatticon.launch
